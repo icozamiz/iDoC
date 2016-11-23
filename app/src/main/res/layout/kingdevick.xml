@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="16dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="8dp"
+    android:paddingTop="10dp"
+    android:background="@color/lightblue"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.nicksimard.idoc_mar_9_home.Kingdevick"
+    tools:showIn="@layout/kingdevick">
+
+    <Button
+        android:textSize="18sp"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:text="Card 1"
+        android:id="@+id/kd1"
+        android:background="@drawable/pupilbuttonshape"
+        android:layout_marginTop="15dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="9dp"
+        android:textColor="#03A2FF"
+        android:shadowColor="#828282"
+        android:onClick="onButtonClickkd1" />
+
+    <Button
+        android:textSize="18sp"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:text="Card 2"
+        android:id="@+id/kd2"
+        android:background="@drawable/pupilbuttonshape"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="9dp"
+        android:layout_below="@+id/kd1"
+        android:layout_marginTop="30dp"
+        android:textColor="#03A2FF"
+        android:shadowColor="#828282"
+        android:onClick="onButtonClickkd2"/>
+
+    <Button
+        android:textSize="18sp"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:text="Card 3"
+        android:id="@+id/kd3"
+        android:background="@drawable/pupilbuttonshape"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="9dp"
+        android:layout_below="@+id/kd2"
+        android:layout_marginTop="30dp"
+        android:textColor="#03A2FF"
+        android:shadowColor="#828282"
+        android:onClick="onButtonClickkd3"/>
+
+    <ImageButton
+        android:id="@+id/home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@android:style/Widget.Material.Light.Button.Borderless"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:src="@mipmap/home_butt"
+        android:onClick="onButtonClickhome"/>
+
+
+</RelativeLayout>

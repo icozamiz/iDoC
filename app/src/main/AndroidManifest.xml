@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.nicksimard.idoc_mar_9_home">
+
+
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-feature android:name="android.hardware.camera2" android:required="true" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/eye"
+        android:label="IDoC"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:name=".iDoCApp">
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Pupil"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".Saccade"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".Antisaccade"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".Kingdevick"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".AdditionalInfo"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".Kingdevick1"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".Kingdevick2"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".Kingdevick3"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".Results"
+            android:screenOrientation="portrait"></activity>
+    </application>
+
+</manifest>

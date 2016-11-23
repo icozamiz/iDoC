@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="16dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="8dp"
+    android:paddingTop="10dp"
+    android:background="@color/lightblue"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.nicksimard.idoc_mar_9_home.MainActivity"
+    tools:showIn="@layout/activity_main">
+
+    <Button
+        android:textSize="18sp"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:text="Pupillary Test"
+        android:id="@+id/pup"
+        android:background="@drawable/pupilbuttonshape"
+        android:layout_marginTop="15dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="9dp"
+        android:textColor="#03A2FF"
+        android:shadowColor="#828282"
+        android:onClick="onButtonClick" />
+
+    <Button
+        android:textSize="18sp"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:text="Saccade Test"
+        android:id="@+id/sac"
+        android:background="@drawable/pupilbuttonshape"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="9dp"
+        android:layout_below="@+id/pup"
+        android:layout_marginTop="39dp"
+        android:textColor="#03A2FF"
+        android:shadowColor="#828282"
+        android:onClick="onButtonClick2"/>
+
+    <Button
+        android:textSize="18sp"
+        android:layout_width="120dp"
+        android:layout_height="70dp"
+        android:text="Anti-Saccade Test"
+        android:id="@+id/asac"
+        android:background="@drawable/pupilbuttonshape"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="9dp"
+        android:layout_below="@+id/sac"
+        android:layout_marginTop="34dp"
+        android:textColor="#03A2FF"
+        android:shadowColor="#828282"
+        android:onClick="onButtonClick3"/>
+
+    <Button
+        android:textSize="18sp"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:text="King Devick Test"
+        android:id="@+id/kd"
+        android:background="@drawable/pupilbuttonshape"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="9dp"
+        android:layout_below="@+id/asac"
+        android:layout_marginTop="37dp"
+        android:textColor="#03A2FF"
+        android:shadowColor="#828282"
+        android:onClick="onButtonClick4"
+        />
+
+    <Button
+        android:textSize="18sp"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:text="Results"
+        android:id="@+id/results"
+        android:background="@drawable/pupilbuttonshape"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:textColor="#03A2FF"
+        android:shadowColor="#828282"
+        android:onClick="onButtonClick5"/>
+
+    <ImageButton
+        android:id="@+id/addinfo"
+        android:contentDescription="@string/description_info_pup"
+        style="@android:style/Widget.Material.Light.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_action_info"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="52dp"
+        android:onClick="onButtonClick6"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Measure the pupillary response to light by using your phone's flashlight feature and following the prompts indicated."
+        android:id="@+id/textpup"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/pup"
+        android:layout_marginLeft="7dp"
+        android:layout_centerHorizontal="@+id/pup"
+        android:fontFamily="average"
+        android:textColor="#FFFFFF" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Identify if there are any stigmatisms present by asking the patient to look right and left."
+        android:id="@+id/textsac"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textpup"
+        android:layout_alignTop="@+id/sac"
+        android:layout_toRightOf="@+id/sac"
+        android:layout_marginLeft="7dp"
+        android:layout_toEndOf="@+id/sac"
+        android:textColor="#FFFFFF" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Perform a routine cognitive test by asking the patient to look at the opposite direction of which you ask. "
+        android:id="@+id/textasac"
+        android:layout_alignTop="@+id/asac"
+        android:layout_toRightOf="@+id/asac"
+        android:layout_marginLeft="7dp"
+        android:layout_toEndOf="@+id/asac"
+        android:textColor="#FFFFFF"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="An easy to perform sideline cognition pattern recognition test to be applied to the patient's personal King-Devick database."
+        android:id="@+id/textkd"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textasac"
+        android:layout_alignTop="@+id/kd"
+        android:layout_marginTop="-11dp"
+        android:layout_toRightOf="@+id/kd"
+        android:layout_marginLeft="7dp"
+        android:layout_toEndOf="@+id/kd"
+        android:textColor="#FFFFFF"/>
+
+    <FrameLayout
+        android:id="@+id/pupbox"
+        android:layout_width="fill_parent"
+        android:layout_height="80dp"
+        android:background="@drawable/dotted"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+    <FrameLayout
+        android:id="@+id/sacbox"
+        android:layout_width="fill_parent"
+        android:layout_height="70dp"
+        android:padding="40dp"
+        android:background="@drawable/dotted"
+        android:layout_below="@+id/pupbox"
+        android:layout_marginTop="15dp"/>
+
+    <FrameLayout
+        android:id="@+id/asacbox"
+        android:layout_width="fill_parent"
+        android:layout_height="85dp"
+        android:padding="40dp"
+        android:background="@drawable/dotted"
+        android:layout_below="@+id/sacbox"
+        android:layout_marginTop="15dp"/>
+
+    <FrameLayout
+        android:id="@+id/kdbox"
+        android:layout_width="fill_parent"
+        android:layout_height="80dp"
+        android:padding="40dp"
+        android:background="@drawable/dotted"
+        android:layout_below="@+id/asacbox"
+        android:layout_marginTop="15dp"/>
+
+</RelativeLayout>
