@@ -1,4 +1,4 @@
-package com.example.nicksimard.idoc_mar_9_home;
+package com.example.iDoC;
 
 /**
  * Created by nicksimard on 16-03-15.

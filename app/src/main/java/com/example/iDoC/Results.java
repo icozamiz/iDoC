@@ -1,4 +1,4 @@
-package com.example.nicksimard.idoc_mar_9_home;
+package com.example.iDoC;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -10,6 +10,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.example.nicksimard.idoc_mar_9_home.R;
 
 import java.io.IOException;
 

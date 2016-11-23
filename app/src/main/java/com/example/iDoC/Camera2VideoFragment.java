@@ -1,4 +1,4 @@
-package com.example.nicksimard.idoc_mar_9_home;
+package com.example.iDoC;
 
 /**
  * Created by nicksimard on 16-03-15.
@@ -19,7 +19,6 @@ import android.graphics.Matrix;
 import android.graphics.RectF;
 import android.graphics.SurfaceTexture;
 import android.graphics.Typeface;
-import android.hardware.Camera;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraCaptureSession;
 import android.hardware.camera2.CameraCharacteristics;
@@ -39,7 +38,6 @@ import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.support.v13.app.FragmentCompat;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.util.Size;
 import android.util.SparseIntArray;
@@ -52,6 +50,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.nicksimard.idoc_mar_9_home.R;
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;

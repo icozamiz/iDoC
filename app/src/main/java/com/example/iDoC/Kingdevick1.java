@@ -1,17 +1,15 @@
-package com.example.nicksimard.idoc_mar_9_home;
+package com.example.iDoC;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.renderscript.ScriptGroup;
 import android.view.KeyEvent;
-import android.view.View;
 import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.example.nicksimard.idoc_mar_9_home.R;
 
 /**
  * Created by nicksimard on 16-04-03.

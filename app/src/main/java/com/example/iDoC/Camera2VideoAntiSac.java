@@ -1,4 +1,4 @@
-package com.example.nicksimard.idoc_mar_9_home;
+package com.example.iDoC;
 
 /**
  * Created by nicksimard on 16-03-15.
@@ -19,7 +19,6 @@ import android.graphics.Matrix;
 import android.graphics.RectF;
 import android.graphics.SurfaceTexture;
 import android.graphics.Typeface;
-import android.hardware.Camera;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraCaptureSession;
 import android.hardware.camera2.CameraCharacteristics;
@@ -36,11 +35,9 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.StrictMode;
-import android.os.StrictMode.ThreadPolicy;
 import android.support.annotation.NonNull;
 import android.support.v13.app.FragmentCompat;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.util.Size;
 import android.util.SparseIntArray;
@@ -54,35 +51,24 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.example.nicksimard.idoc_mar_9_home.R;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
-import java.io.InputStream;
-import java.io.DataInputStream;
-import java.io.IOException;
-import java.io.IOException;
 
 import okhttp3.Call;
 import okhttp3.OkHttpClient;
@@ -90,11 +76,11 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-public class Camera2VideoSac extends Fragment
+public class Camera2VideoAntiSac extends Fragment
         implements View.OnClickListener, FragmentCompat.OnRequestPermissionsResultCallback {
 
     private static final SparseIntArray ORIENTATIONS = new SparseIntArray();
-    public static String serverResponseSac;
+    public static String serverResponseAsac;
     private static final String TAG = "Camera2VideoFragment";
     private static final int REQUEST_VIDEO_PERMISSIONS = 1;
     private static final String FRAGMENT_DIALOG = "dialog";
@@ -103,7 +89,7 @@ public class Camera2VideoSac extends Fragment
             Manifest.permission.CAMERA,
             Manifest.permission.RECORD_AUDIO,
     };
-    private static final String LOG_TAG_ENREGISTREUR =  null;
+    private static final String LOG_TAG_ENREGISTREUR = null;
 
     static {
         ORIENTATIONS.append(Surface.ROTATION_0, 90);
@@ -112,8 +98,8 @@ public class Camera2VideoSac extends Fragment
         ORIENTATIONS.append(Surface.ROTATION_270, 180);
     }
 
-    TextView titlesac;
-    Typeface fontsac;
+    TextView titleasac;
+    Typeface fontasac;
 
     /**
      * An {@link AutoFitTextureView} for camera preview.
@@ -136,7 +122,7 @@ public class Camera2VideoSac extends Fragment
      */
     private CameraCaptureSession mPreviewSession;
 
-    private ImageView mtarget, mcheckright, mcheckleft;
+    private ImageView mtarget, mcheckleft, mcheckright;
     private Button mright, mleft;
 
     Thread.UncaughtExceptionHandler h = new Thread.UncaughtExceptionHandler() {
@@ -253,9 +239,7 @@ public class Camera2VideoSac extends Fragment
 
     };
 
-    public static Camera2VideoSac newInstance() {
-        return new Camera2VideoSac();
-    }
+    public static Camera2VideoAntiSac newInstance() {return new Camera2VideoAntiSac();}
 
     /**
      * In this sample, we choose a video size with 3x4 aspect ratio. Also, we don't use sizes
@@ -310,24 +294,24 @@ public class Camera2VideoSac extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View viewAsac = inflater.inflate(R.layout.fragment_camera2_asac, container, false);
 
-        View viewSac = inflater.inflate(R.layout.fragment_camera2_sac, container, false);
-        titlesac = (TextView) viewSac.findViewById(R.id.instructsac);
-        fontsac = Typeface.createFromAsset(getActivity().getAssets(), "fonts/exol.otf");
-        titlesac.setTextSize(14);
-        titlesac.setTypeface(fontsac);
+        titleasac = (TextView) viewAsac.findViewById(R.id.instructasac);
+        fontasac = Typeface.createFromAsset(getActivity().getAssets(), "fonts/exol.otf");
+        titleasac.setTextSize(14);
+        titleasac.setTypeface(fontasac);
 
-        return viewSac;
+        return viewAsac;
     }
 
     @Override
     public void onViewCreated(final View view, Bundle savedInstanceState) {
         mTextureView = (AutoFitTextureView) view.findViewById(R.id.texture);
         mtarget = (ImageView) view.findViewById(R.id.target);
-        mleft = (Button) view.findViewById(R.id.promptleftsac);
-        mright = (Button) view.findViewById(R.id.promptrightsac);
-        mcheckright = (ImageView) view.findViewById(R.id.rightyes);
-        mcheckleft = (ImageView) view.findViewById(R.id.leftyes);
+        mleft = (Button) view.findViewById(R.id.promptleftasac);
+        mright = (Button) view.findViewById(R.id.promptrightasac);
+        mcheckleft  = (ImageView) view.findViewById(R.id.leftyesasac);
+        mcheckright = (ImageView) view.findViewById(R.id.rightyesasac);
         mButtonVideo = (Button) view.findViewById(R.id.video);
         mButtonVideo.setOnClickListener(this);
         view.findViewById(R.id.info).setOnClickListener(this);
@@ -366,7 +350,7 @@ public class Camera2VideoSac extends Fragment
                 Activity activity = getActivity();
                 if (null != activity) {
                     new AlertDialog.Builder(activity)
-                            .setMessage(R.string.intro_message_sac)
+                            .setMessage(R.string.intro_message_asac)
                             .setPositiveButton(android.R.string.ok, null)
                             .show();
                 }
@@ -628,15 +612,15 @@ public class Camera2VideoSac extends Fragment
         mTextureView.setTransform(matrix);
     }
 
-
     private void setUpMediaRecorder() throws IOException {
         final Activity activity = getActivity();
-
-
+        if (null == activity) {
+            return;
+        }
         mMediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
         mMediaRecorder.setVideoSource(MediaRecorder.VideoSource.SURFACE);
         mMediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
-        String path = "/storage/emulated/0/Movies/IDoC_Sac/sac_video.mp4";
+        String path = "/storage/emulated/0/Movies/IDoC_Asac/asac_video.mp4";
         mMediaRecorder.setOutputFile(path);
         mMediaRecorder.setVideoEncodingBitRate(10000000);
         mMediaRecorder.setVideoFrameRate(30);
@@ -649,6 +633,7 @@ public class Camera2VideoSac extends Fragment
         mMediaRecorder.prepare();
     }
 
+
     private File getVideoFile(Context context) {
         File fileRecord = new File(context.getExternalFilesDir(null),"testvideo.mp4");
 
@@ -658,23 +643,31 @@ public class Camera2VideoSac extends Fragment
 
         }
         File repertoryStockage;
-        repertoryStockage = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES + "/IDoC_Sac");
+        repertoryStockage = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES + "/IDoC_Asac");
         if(!repertoryStockage.canWrite()){
             Log.e(LOG_TAG_ENREGISTREUR,"Impossible , you can't write");
 
         }
         try {
-            fileRecord = File.createTempFile("sac_video", ".mp4", repertoryStockage);
+            fileRecord = File.createTempFile("asac_video", ".mp4", repertoryStockage);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return fileRecord;
     }
 
-//        File dir = context.getExternalFilesDir(Environment.DIRECTORY_MOVIES);
-  //      return new File(dir, "sac_" + System.nanoTime() +"_video.mp4");
-    //}
 
+   /* private File getVideoFile(Context context) {
+        File dir = context.getExternalFilesDir("IDoc_Asac");
+        return new File(dir, "asac_video.mp4");
+    }*/
+
+  /*  private File getVideoFile()
+    {
+        File file = new File(Environment.getExternalStorageDirectory(), "Video_" + System.currentTimeMillis() + ".mp4" );
+        return file;
+    }
+*/
 
     private void startRecordingVideo() {
         try {
@@ -686,14 +679,14 @@ public class Camera2VideoSac extends Fragment
             mMediaRecorder.start();
             mPreviewBuilder.set(CaptureRequest.FLASH_MODE, CameraMetadata.FLASH_MODE_TORCH);
             mPreviewSession.setRepeatingRequest(mPreviewBuilder.build(), null, null);
-            titlesac.setVisibility(View.INVISIBLE);
+            titleasac.setVisibility(View.INVISIBLE);
             CountDownTimer onpause = new CountDownTimer(1000, 1000)
             {
                 public void onTick(long millisUntilFinished) {
                 }
                 public void onFinish() {
                     mleft.setVisibility(View.VISIBLE);
-                    mcheckright.setVisibility(View.VISIBLE);
+                    mcheckleft.setVisibility(View.VISIBLE);
                 }
             }.start();
             CountDownTimer invisileft1 = new CountDownTimer(2750, 1000) {
@@ -702,7 +695,7 @@ public class Camera2VideoSac extends Fragment
 
                 public void onFinish() {
                     mleft.setVisibility(View.INVISIBLE);
-                    mcheckright.setVisibility(View.INVISIBLE);
+                    mcheckleft.setVisibility(View.INVISIBLE);
                 }
             }.start();
             CountDownTimer firstright = new CountDownTimer(3000,1000) {
@@ -710,15 +703,15 @@ public class Camera2VideoSac extends Fragment
                 }
                 public void onFinish() {
                     mright.setVisibility(View.VISIBLE);
-                    mcheckleft.setVisibility(View.VISIBLE);
-                    }
+                    mcheckright.setVisibility(View.VISIBLE);
+                }
             }.start();
             CountDownTimer invisiright1 = new CountDownTimer(4750, 1000) {
                 public void onTick(long millisUntilFinished) {
                 }
                 public void onFinish() {
                     mright.setVisibility(View.INVISIBLE);
-                    mcheckleft.setVisibility(View.INVISIBLE);
+                    mcheckright.setVisibility(View.INVISIBLE);
                 }
             }.start();
             CountDownTimer secondleft = new CountDownTimer(5000, 1000)
@@ -727,7 +720,7 @@ public class Camera2VideoSac extends Fragment
                 }
                 public void onFinish() {
                     mleft.setVisibility(View.VISIBLE);
-                    mcheckright.setVisibility(View.VISIBLE);
+                    mcheckleft.setVisibility(View.VISIBLE);
                 }
             }.start();
             CountDownTimer invisileft2 = new CountDownTimer(6750, 1000) {
@@ -735,7 +728,7 @@ public class Camera2VideoSac extends Fragment
                 }
                 public void onFinish() {
                     mleft.setVisibility(View.INVISIBLE);
-                    mcheckright.setVisibility(View.INVISIBLE);
+                    mcheckleft.setVisibility(View.INVISIBLE);
                 }
             }.start();
             CountDownTimer secondright = new CountDownTimer(7000, 1000)
@@ -744,7 +737,7 @@ public class Camera2VideoSac extends Fragment
                 }
                 public void onFinish() {
                     mright.setVisibility(View.VISIBLE);
-                    mcheckleft.setVisibility(View.VISIBLE);
+                    mcheckright.setVisibility(View.VISIBLE);
                 }
             }.start();
             CountDownTimer invisiright2 = new CountDownTimer(8750, 1000) {
@@ -752,7 +745,7 @@ public class Camera2VideoSac extends Fragment
                 }
                 public void onFinish() {
                     mright.setVisibility(View.INVISIBLE);
-                    mcheckleft.setVisibility(View.INVISIBLE);
+                    mcheckright.setVisibility(View.INVISIBLE);
                 }
             }.start();
 
@@ -770,15 +763,14 @@ public class Camera2VideoSac extends Fragment
     }
 
     private void stopRecordingVideo() {
-
-        ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         // UI
         mIsRecordingVideo = false;
 
 
         mButtonVideo.setText("Record");
-        titlesac.setVisibility(View.VISIBLE);
+        titleasac.setVisibility(View.VISIBLE);
         //Stop recording
         mMediaRecorder.stop();
         mPreviewBuilder.set(CaptureRequest.FLASH_MODE, CameraMetadata.FLASH_MODE_OFF);
@@ -788,18 +780,13 @@ public class Camera2VideoSac extends Fragment
             e.printStackTrace();
         }
         mMediaRecorder.reset();
-
         Activity activity = getActivity();
         if (null != activity) {
             final Toast toast = Toast.makeText(activity, "Video saved to SD Card", Toast.LENGTH_LONG);
-            CountDownTimer ToastCount = new CountDownTimer(7000, 10) {
-                public void onTick(long millisUntilFinished) {
-                    toast.show();
-                }
-
-                public void onFinish() {
-                    toast.cancel();
-                }
+            CountDownTimer ToastCount = new CountDownTimer(7000, 10)
+            {
+                public void onTick(long millisUntilFinished) {toast.show();}
+                public void onFinish() {toast.cancel();}
             };
             toast.show();
             ToastCount.start();
@@ -810,8 +797,8 @@ public class Camera2VideoSac extends Fragment
         //TODO put file onto the server
         if (status == 200){
             String filepath = "/storage/emulated/0/Movies/IDoC_Sac/sac_video.mp4";
-            serverResponseSac = upLoad2Server(filepath);
-            Log.i("serverstuff", "THE FILE WAS SENT THIS IS THE RESPONSE:     " + serverResponseSac);
+            serverResponseAsac = upLoad2Server(filepath);
+            Log.i("serverstuff", "THE FILE WAS SENT THIS IS THE RESPONSE:     " + serverResponseAsac);
         }
         startPreview();
 
@@ -836,7 +823,7 @@ public class Camera2VideoSac extends Fragment
 
 
     public static String upLoad2Server(String sourceFileUri) {
-        String upLoadServerUri = "http://idoc.iansinke.com/upload/2";
+        String upLoadServerUri = "http://idoc.iansinke.com/upload/3";
         // String [] string = sourceFileUri;
         String fileName = sourceFileUri;
 
@@ -869,7 +856,7 @@ public class Camera2VideoSac extends Fragment
             conn.setRequestProperty("ENCTYPE", "multipart/form-data");
             conn.setRequestProperty("Content-Type", "multipart/form-data;boundary=" + boundary);
             conn.setRequestProperty("uploaded_file", fileName);
-        //TODO where its going wrong
+            //TODO where its going wrong
             dos = new DataOutputStream(conn.getOutputStream());
 
             dos.writeBytes(twoHyphens + boundary + lineEnd);
@@ -919,15 +906,13 @@ public class Camera2VideoSac extends Fragment
             while ((videoID = rd.readLine()) != null) {
                 Log.i("Huzza", "RES Message: " + videoID);
             }
-            responseFromServer = videoID;
             try {
-                Results.class.newInstance().setSacResult(responseFromServer);
+                Results.class.newInstance().setAsacResult(videoID);
             } catch (java.lang.InstantiationException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
             }
-
             rd.close();
         } catch (IOException ioex) {
             Log.e("Huzza", "error: " + ioex.getMessage(), ioex);
@@ -943,7 +928,9 @@ public class Camera2VideoSac extends Fragment
 
 
 
-
+    /**
+     * Compares two {@code Size}s based on their areas.
+     */
     static class CompareSizesByArea implements Comparator<Size> {
 
         @Override
@@ -952,8 +939,8 @@ public class Camera2VideoSac extends Fragment
             return Long.signum((long) lhs.getWidth() * lhs.getHeight() -
                     (long) rhs.getWidth() * rhs.getHeight());
         }
-    }
 
+    }
 
     public static class ErrorDialog extends DialogFragment {
 
@@ -1008,6 +995,8 @@ public class Camera2VideoSac extends Fragment
         }
 
     }
-
+    public String getServerResponse(){
+        return serverResponseAsac;
+    }
 
 }

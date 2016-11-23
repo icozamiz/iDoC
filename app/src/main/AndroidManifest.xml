@@ -18,9 +18,9 @@
         android:label="IDoC"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:name=".iDoCApp">
+        android:name="com.example.iDoC.iDoCApp">
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.iDoC.MainActivity"
             android:screenOrientation="portrait"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
@@ -29,23 +29,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Pupil"
+        <activity android:name="com.example.iDoC.Pupil"
             android:screenOrientation="portrait"></activity>
-        <activity android:name=".Saccade"
+        <activity android:name="com.example.iDoC.Saccade"
             android:screenOrientation="portrait"></activity>
-        <activity android:name=".Antisaccade"
+        <activity android:name="com.example.iDoC.Antisaccade"
             android:screenOrientation="portrait"></activity>
-        <activity android:name=".Kingdevick"
+        <activity android:name="com.example.iDoC.Kingdevick"
             android:screenOrientation="portrait"></activity>
-        <activity android:name=".AdditionalInfo"
+        <activity android:name="com.example.iDoC.AdditionalInfo"
             android:screenOrientation="portrait"></activity>
-        <activity android:name=".Kingdevick1"
+        <activity android:name="com.example.iDoC.Kingdevick1"
             android:screenOrientation="portrait"></activity>
-        <activity android:name=".Kingdevick2"
+        <activity android:name="com.example.iDoC.Kingdevick2"
             android:screenOrientation="portrait"></activity>
-        <activity android:name=".Kingdevick3"
+        <activity android:name="com.example.iDoC.Kingdevick3"
             android:screenOrientation="portrait"></activity>
-        <activity android:name=".Results"
+        <activity android:name="com.example.iDoC.Results"
             android:screenOrientation="portrait"></activity>
     </application>
 

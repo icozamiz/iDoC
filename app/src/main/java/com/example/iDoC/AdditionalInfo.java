@@ -1,7 +1,9 @@
-package com.example.nicksimard.idoc_mar_9_home;
+package com.example.iDoC;
 
 import android.app.Activity;
 import android.os.Bundle;
+
+import com.example.nicksimard.idoc_mar_9_home.R;
 
 /**
  * Created by nicksimard on 16-03-10.
